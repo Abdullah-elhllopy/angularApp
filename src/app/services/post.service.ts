@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-
 import { Post } from '../models/Post';
-
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PostService {
   postsUrl: string = 'https://jsonplaceholder.typicode.com/posts';
-
-  constructor(private http: HttpClient) { }
+  english !: boolean
+  
+  constructor(private http: HttpClient) {
+    
+   }
+  checkLang(lang : string){
+    if(lang == 'en')this.english = true
+    else this.english = false
+  }
+  
 
   getPosts() : Observable<Post[]> {
     return this.http.get<Post[]>(this.postsUrl);
@@ -21,7 +29,7 @@ export class PostService {
   savePost(post: Post): Observable<Post> {
     return this.http.post<Post>(this.postsUrl, post, httpOptions);
   }
-
+ 
   updatePost(post: Post) :Observable<Post> {
     const url = `${this.postsUrl}/${post.id}`;
 
@@ -35,3 +43,4 @@ export class PostService {
     return this.http.delete<Post>(url, httpOptions);
   }
 }
+

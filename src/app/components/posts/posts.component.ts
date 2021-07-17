@@ -1,30 +1,55 @@
+import { NavbarService } from './../navbar/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-
+import { TranslateService } from '@ngx-translate/core';
 import { Post } from '../../models/Post';
+
+
+
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
+  inputs: ['questionNumber'],
+  providers: [PostService]
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit   {
   posts: Post[]=[];
-  currentPost: Post = {
+  currentPost: Post  ={
     id: 0,
     title: '',
     body: ''
   }
+
   isEdit: boolean = false;
+  currentLang !:string;
+ 
 
-  constructor(private postService: PostService) { }
-
+  constructor(
+      public postService: PostService ,
+      public translate: TranslateService ,
+      public navbarService : NavbarService,
+    
+    ) {
+    this.postService = postService;
+    this.navbarService.languageSubject.subscribe (x=>{
+        this.currentLang = x;
+    })
+   
+   }
+  
+  
   ngOnInit() {  
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
     });
-  }
 
+ 
+    
+  }
+  
+  
   onNewPost(post: Post) {
     this.posts.unshift(post);
   }
@@ -32,6 +57,7 @@ export class PostsComponent implements OnInit {
   editPost(post: Post) {
     this.currentPost = post;
     this.isEdit = true;
+    
   }
 
   onUpdatedPost(post: Post) {
@@ -48,6 +74,7 @@ export class PostsComponent implements OnInit {
       }
     });
   }
+
 
   removePost(post: Post) {
     if(confirm('Are You Sure?')) {

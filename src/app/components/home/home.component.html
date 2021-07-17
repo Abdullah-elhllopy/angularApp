@@ -1,6 +1,8 @@
-<h1>Welcome</h1>
-<button class="btn btn-secondary mx-2" routerLink ="/users">Users Section</button>
-<button class="btn btn-dark" routerLink ="/posts">Posts Section</button>
+<h1 [ngClass]="{'d-flex justify-content-end':currentLang=== 'ar'}">{{"Welcome" | translate}}</h1>
+<div [ngClass]="{'d-flex justify-content-end':currentLang=== 'ar'}">
+<button  class="btn btn-secondary mx-2" routerLink ="/users">{{"Users Section" | translate}}</button>
+<button class="btn btn-dark" routerLink ="/posts">{{"Posts Section" | translate}}</button>
+</div>
 
 
 

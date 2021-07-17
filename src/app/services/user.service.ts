@@ -43,6 +43,7 @@ export class UserService {
       setTimeout(() => {
         observer.next(1);
       }, 1000);
+      
 
       setTimeout(() => {
         observer.next(2);

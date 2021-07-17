@@ -1,0 +1,44 @@
+{
+    "Angular App": "تطبيق انجولار",
+    "Home": "الصفحه الرئيسيه",
+    "Users": " المستخدمين",
+    "Posts": "المنشورات" ,
+    "Add Post" : "اضافه منشور",
+    "Title" : "العنوان",
+    "Body":"المنشور",
+    "Update Post" : "تعديل المنشور",
+    "Add User" : "اضافه مستخدم",
+    "First Name":"الاسم الاول",
+    "First name required" : "يجب ادخال الاسم الاول",
+    "Must be at least 2 characters" : "يجب ان يكون علي الاقل حرفين",
+    "Last Name" : "الاسم الاخير",
+    "Last name required" : " يجب ادخال الاسم الاخير",
+    "Email" :"البريد الالكنروني",
+    "Email name required" : " يجب ادخال البريد الالكتروني",
+    "Email is not valid":"    البريد الالكتروني ليس صحيح",
+    "Add New User" : "اضافه مستخدم جديد",
+    "Joined" : "اخر ظهور",
+    "Welcome" : "مرحبا",
+    "Users Section" : "المستخدمين",
+    "Posts Section" : "المنشورات",
+    "Frist Name can not contain space"  : "الاسم الاول لايمكن ان يحتوي علي مسافه",
+    "Last Name can not contain space" : "الاسم الاخير لايمكن ان يحتوي علي مسافه",
+    "String Only and Not Space" : " يقبل الحروف فقط ولا يوجد به مسافات",
+    "Title required" : "بجب ادخال العنوان",
+    "Body required" : "يجب ادخال المنشور",
+    "Should Be a String and not contain any Space" : "يجب ان يكون حروفا ولا يحتوي علي مسافات",
+    "cookie": {
+        "header": "Cookies used on the website!",
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "allow": "Allow cookies",
+        "deny": "Decline",
+        "link": "Learn more",
+        "policy": "Cookie Policy"
+    }
+  
+
+
+
+
+}

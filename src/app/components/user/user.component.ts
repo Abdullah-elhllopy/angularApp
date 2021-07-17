@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { User } from '../../models/User';
+import { AbstractControl, ValidationErrors } from '@angular/Forms';
 
 @Component({
   selector: 'app-user',
@@ -9,20 +8,23 @@ import { User } from '../../models/User';
 })
 
 export class UserComponent implements OnInit {
-  // Properties
-  // Properties
-  user!: User;
+  static cannotContainSpace(control: AbstractControl) : ValidationErrors | null {
 
+    if((control.value as string).indexOf(' ') >= 0){
+
+        return {cannotContainSpace: true}
+
+    }
+
+    return null;
+
+}
   // Methods
   constructor() {
     
   } 
 
   ngOnInit() {
-    this.user = {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@gmail.com'
-    }
+   
   }
 }

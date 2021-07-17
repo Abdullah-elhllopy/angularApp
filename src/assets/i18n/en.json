@@ -1,0 +1,45 @@
+{
+    
+    "Angular App": " Angular App",
+    "Home": "Home",
+    "Users": "Users",
+    "Posts": "Posts",
+    "Add Post" : "Add Post",
+    "Title" : "Title",
+    "Body":"Body",
+    "Update Post" : "Update Post",
+    "Add User" : "Add User",
+    "First Name":"First Name",
+    "First name required" : "First name required",
+    "Must be at least 2 characters" : "Must be at least 2 characters",
+    "Last Name" : "Last Name",
+    "Last name required" : "Last name required",
+    "Email" :"Email",
+    "Email name required" : "Email name required",
+    "Email is not valid":"  Email is not valid",
+    "Add New User" : "Add New User",
+    "Joined" : "Joined",
+    "Welcome" : "Welcome",
+    "Users Section" : "Users Section",
+    "Posts Section" : "Posts Section",
+    "Frist Name can not contain space"  : "Frist Name can not contain space",
+    "Last Name can not contain space" : "Last Name can not contain space",
+    "Should be String Only" : "Should be String Only",
+    "Title required" : "Title Required",
+    "Body required" : "Bost Required",
+    "Should Be a String and not contain any Space" : "Should Be a String and not contain any Space ",
+    "cookie": {
+        "header": "Cookies used on the website!",
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "allow": "Allow cookies",
+        "deny": "Decline",
+        "link": "Learn more",
+        "policy": "Cookie Policy"
+    }
+    
+
+
+    
+
+}

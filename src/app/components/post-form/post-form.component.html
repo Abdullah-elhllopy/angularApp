@@ -1,17 +1,116 @@
+<!--
+<h2 [ngClass]="{'d-flex justify-content-end':currentLang=== 'ar'}">{{"Add Post" | translate}}</h2>
+<div class="card card-body mb-3">
+
+  <form (ngSubmit)="submit()" [formGroup]="vaildForm" autocomplete="off">
+
+
+
+    <div class="form-group" >
+      <label [ngClass]="{'d-flex justify-content-end':currentLang === 'ar'}">{{"Title" | translate}}</label>
+      <input 
+            value="currentPost.body"
+            formControlName="title"
+            class="form-control" 
+            placeholder="Title..."
+            type="text" 
+            [ngClass]="{'is-invalid':f.title.errors && f.title.touched}"
+            >
+
+        <div *ngIf="f.title.touched || f.title.invalid"class="invalid-feedback" >
+            <div *ngIf="f.title.errors?.required">{{"Title required" | translate}}</div>
+            <div *ngIf="f.title.errors?.minlength">{{"Must be at least 2 characters" | translate}}   </div>
+            <div *ngIf="f.title.errors?.pattern"> {{"Should Be a String and not contain any Space" | translate}}</div>  
+        </div>
+
+ 
+    </div>
+
+    <div class="form-group" >
+      <label [ngClass]="{'d-flex justify-content-end':currentLang === 'ar'}">{{"Body" | translate}}</label>
+      <input 
+            formControlName="body"
+            class="form-control" 
+            placeholder="Body"
+            type="text" 
+            [ngClass]="{'is-invalid':f.body.errors && f.body.touched}"
+            >
+
+        <div *ngIf="f.body.touched || f.body.invalid"class="invalid-feedback" >
+            <div *ngIf="f.body.errors?.required">{{"Body required" | translate}}</div>
+            <div *ngIf="f.body.errors?.minlength">{{"Must be at least 2 characters" | translate}}   </div>
+            <div *ngIf="f.body.errors?.pattern"> {{ "Should Be a String and not contain any Space" | translate}}</div>
+        </div>
+    </div>
+
+    <!--
+    <div class="form-group">
+      <label [ngClass]="{'d-flex justify-content-end':currentLang=== 'ar'}">{{"Body" | translate}}</label>
+      <input 
+          type="text"
+          class="form-control"
+          [(ngModel)]="currentPost.body" 
+          name="body"
+          #body = "ngModel"
+          required
+          pattern=".*\\S.*[a-zA-z0-9 ]"
+         >
+         <div [hidden]="!body.errors?.pattern" class="invalid-feedback">
+          {{"Must be string and doesnot have any white space" }}
+           
+       </div>
+       <div [hidden]="!body.errors?.required" class="invalid-feedback">
+        Must be string and doesnot have any white space
+         
+     </div>
+    </div>
+    <input type="hidden" [(ngModel)]="currentPost.id" name="id">
+    
+
+    <button  *ngIf="!isEdit"  type="submit" [disabled]="!vaildForm.valid" class="btn btn-dark btn-block">{{"Add Post" | translate}}</button>
+
+    <button *ngIf="isEdit" [disabled]="!vaildForm.valid" (click)="updatePost()" class="btn btn-warning btn-block">{{"Update Post" | translate}}</button>
+  </form>
+</div>
+-->
 <h2>Add Post</h2>
 <div class="card card-body mb-3">
-  <form>
+  <form #postForm="ngForm" >
     <div class="form-group">
       <label>Title</label>
-      <input type="text" class="form-control" [(ngModel)]="currentPost.title" name="title" #title>
+      <input type="text"
+         class="form-control"
+         [(ngModel)]="currentPost.title"
+         name="title"
+         #title ="ngModel"
+         [ngClass]="{'is-invalid':title.errors && title.touched}"
+         name="title"
+         required
+         pattern="^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]+[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z-_]*$"
+        >
+        <div [hidden]="!title.errors?.pattern" class="invalid-feedback">
+          {{"Should Be a String and not contain any Space" | translate}}
+        </div>
     </div>
     <div class="form-group">
       <label>Body</label>
-      <input type="text" class="form-control" [(ngModel)]="currentPost.body" name="body" #body>
+      <input type="text"
+       class="form-control" 
+       [(ngModel)]="currentPost.body" 
+       [ngClass]="{'is-invalid':title.errors && title.touched}"
+
+       name="body" 
+       #body="ngModel"
+       pattern="^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]+[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z-_]*$"
+       name="body"
+       >
+       <div [hidden]="!body.errors?.pattern" class="invalid-feedback">
+        {{"Should Be a String and not contain any Space" | translate}}
+      </div>
     </div>
     <input type="hidden" [(ngModel)]="currentPost.id" name="id">
 
-    <button *ngIf="!isEdit" (click)="addPost(title.value, body.value)" class="btn btn-dark btn-block">Add Post</button>
+    <button [disabled]="!postForm.form.valid" *ngIf="!isEdit" (click)="addPost(postForm.value.title,postForm.value.body)" class="btn btn-dark btn-block">Add Post</button>
 
     <button *ngIf="isEdit" (click)="updatePost()" class="btn btn-warning btn-block">Update Post</button>
   </form>
